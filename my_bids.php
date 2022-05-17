@@ -31,13 +31,13 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./home.html"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./home.php"><img src="img/logo.png"></a></h1>
                     </div>
                 </div>
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="profile.html">Profile<span class="cart-amunt"></span> </a>
+                        <a href="profile.php">Profile<span class="cart-amunt"></span> </a>
                     </div>
                 </div>
             </div>
@@ -57,41 +57,59 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.html">Home</a></li>
-                        <li><a href="listings.html">Listings</a></li>
-                        <li><a href="new_listing.html"> Create New Listing</a></li>
-                        <li><a href="messages.html"> My Messages</a></li>
-                        <li><a href="my_listings.html"> My Listings</a></li>
-                        <li><a href="my_bids.html"> My Bids</a></li>
-                        <li><a href="favs.html"> My Favorite Listings</a></li>
+                        <li class="active"><a href="home.php">Home</a></li>
+                        <li><a href="listings.php">Listings</a></li>
+                        <li><a href="new_listing.php"> Create New Listing</a></li>
+                        <li><a href="messages.php"> My Messages</a></li>
+                        <li><a href="my_listings.php"> My Listings</a></li>
+                        <li><a href="my_bids.php"> My Bids</a></li>
+                        <li><a href="favs.php"> My Favorite Listings</a></li>
                     </ul>
                 </div>  
             </div>
         </div>
     </div>
-    <br><br><br>
-
-    <div class="container mt-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-7">
-                <div class="card p-3 py-4">
-                    <div class="text-center"> <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"> </div>
-                    <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white"></span><br>
-                        <h5 class="mt-2 mb-0">Fatih Cerit (fcerit)</h5> <span>Expert Seller</span><br>
-                        <h5 class="mt-2 mb-0"><span>fcerit@email.com</span><br>
-                        <h5 class="mt-2 mb-0"><span>999-000-111</span><br>
-                        <br>
-                        <br>
-                        <div class="px-4 mt-1">
-                            
-                        </div>
-        
-                    </div>
-                </div>
-            </div>
-        </div>
+    <br><br>
+    <center><h2>My Bids</h2></center>
+    <br><br>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                
+                <th scope="col">ID</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Last Bid</th>
+                <th scope="col">My Last Bid</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                
+                <td><a href="single-product.php">01</a></td>
+                <td>Samsung</td>
+                <td>4000</td>
+                <td>3500</td>
+            </tr>
+            <tr>
+                
+                <td><a href="single-product.php">007</a></td>
+                <td>Apple</td>
+                <td>10000</td>
+                <td>9100</td>
+            </tr>
+            <tr>
+                <td><a href="single-product.php">999</a></td>
+                <td>Nokia</td>
+                <td>1500</td>
+                <td>1500</td>
+            </tr>
+            </tbody>
+        </table>
+        <br><br>
     </div>
 
-    <br><br><br>
+
+
     </body>
 </html>

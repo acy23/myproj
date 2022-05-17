@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ezBUYo</title>
+    <title>ezBUY</title>
     
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -31,13 +31,13 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./home.html"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./home.php"><img src="img/logo.png"></a></h1>
                     </div>
                 </div>
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="profile.html">Profile<span class="cart-amunt"></span> </a>
+                        <a href="profile.php">Profile<span class="cart-amunt"></span> </a>
                     </div>
                 </div>
             </div>
@@ -57,58 +57,56 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.html">Home</a></li>
-                        <li><a href="listings.html">Listings</a></li>
-                        <li><a href="new_listing.html"> Create New Listing</a></li>
-                        <li><a href="messages.html"> My Messages</a></li>
-                        <li><a href="my_listings.html"> My Listings</a></li>
-                        <li><a href="my_bids.html"> My Bids</a></li>
-                        <li><a href="favs.html"> My Favorite Listings</a></li>
+                        <li class="active"><a href="home.php">Home</a></li>
+                        <li><a href="listings.php">Listings</a></li>
+                        <li><a href="new_listing.php"> Create New Listing</a></li>
+                        <li><a href="messages.php"> My Messages</a></li>
+                        <li><a href="my_listings.php"> My Listings</a></li>
+                        <li><a href="my_bids.php"> My Bids</a></li>
+                        <li><a href="favs.php"> My Favorite Listings</a></li>
                     </ul>
                 </div>  
             </div>
         </div>
     </div>
     <br><br>
-    <center><h2>My Listings</h2></center>
+    <center><h2>Messages</h2></center>
     <br><br>
     <div class="container">
         <table class="table table-striped">
             <thead>
             <tr>
                 
-                <th scope="col">ID</th>
-                <th scope="col">Brand</th>
-                <th scope="col">Price</th>
-                <th scope="col">Picture</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Message</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 
-                <td><a href="single-product.html">01</a></td>
-                <td>Samsung</td>
-                <td>4000</td>
-                <td><img src="img/product-2.jpg" alt="" border=3 height=50 width=120></img></td>
+                <td>Ahmet</td>
+                <td>Taş</td>
+                <td>atas</td>
+                <td>Urunuzu cok begendim</td>
             </tr>
             <tr>
                 
-                <td><a href="single-product.html">007</a></td>
-                <td>Apple</td>
-                <td>10000</td>
-                <td><img src="img/product-1.jpg" alt="" border=3 height=50 width=120></img></td>
+                <td>Mehmet</td>
+                <td>Kaya</td>
+                <td>mkaya</td>
+                <td>Ara beni, numaram: _______</td>
             </tr>
             <tr>
-                <td><a href="single-product.html">999</a></td>
-                <td>Nokia</td>
-                <td>1000</td>
-                <td><img src="img/product-3.jpg" alt="" border=3 height=50 width=120></img></td>
+                <td>Ayşe</td>
+                <td>Toprak</td>
+                <td>atoprak</td>
+                <td>En dusuk ne olur?</td>
             </tr>
             </tbody>
         </table>
-        <br><br>
     </div>
-
 
 
 

@@ -13,6 +13,7 @@
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -37,13 +38,13 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./home.html"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./home.php"><img src="img/logo.png"></a></h1>
                     </div>
                 </div>
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="profile.html">Profile<span class="cart-amunt"></span> </a>
+                        <a href="profile.php">Profile<span class="cart-amunt"></span> </a>
                     </div>
                 </div>
             </div>
@@ -63,13 +64,13 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.html">Home</a></li>
-                        <li><a href="listings.html">Listings</a></li>
-                        <li><a href="new_listing.html"> Create New Listing</a></li>
-                        <li><a href="messages.html"> My Messages</a></li>
-                        <li><a href="my_listings.html"> My Listings</a></li>
-                        <li><a href="my_bids.html"> My Bids</a></li>
-                        <li><a href="favs.html"> My Favorite Listings</a></li>
+                        <li class="active"><a href="home.php">Home</a></li>
+                        <li><a href="listings.php">Listings</a></li>
+                        <li><a href="new_listing.php"> Create New Listing</a></li>
+                        <li><a href="messages.php"> My Messages</a></li>
+                        <li><a href="my_listings.php"> My Listings</a></li>
+                        <li><a href="my_bids.php"> My Bids</a></li>
+                        <li><a href="favs.php"> My Favorite Listings</a></li>
                     </ul>
                 </div>  
             </div>
@@ -106,12 +107,12 @@
                         <div class="product-upper">
                             <img src="img/product-2.jpg" alt="">
                         </div>
-                        <h2><a href="single-product.html">Apple new mac book 2015 March :P</a></h2>
+                        <h2><a href="single-product.php">Apple new mac book 2015 March :P</a></h2>
                         <div class="product-carousel-price">
                             <ins>$899.00</ins> <del>$999.00</del>
                         </div>  
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="single-product.html">Buy Now</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="single-product.php">Buy Now</a>
                             <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow">Auction</a>
                             <br><br>
                             <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Favourite</a>
@@ -124,7 +125,7 @@
                         <div class="product-upper">
                             <img src="img/product-1.jpg" alt="">
                         </div>
-                        <h2><a href="single-product.html">Apple new mac book 2015 March :P</a></h2>
+                        <h2><a href="single-product.php">Apple new mac book 2015 March :P</a></h2>
                         <div class="product-carousel-price">
                             <ins>$899.00</ins> <del>$999.00</del>
                         </div>  
@@ -142,7 +143,7 @@
                         <div class="product-upper">
                             <img src="img/product-3.jpg" alt="">
                         </div>
-                        <h2><a href="single-product.html">Apple new mac book 2015 March :P</a></h2>
+                        <h2><a href="single-product.php">Apple new mac book 2015 March :P</a></h2>
                         <div class="product-carousel-price">
                             <ins>$899.00</ins> <del>$999.00</del>
                         </div>  
@@ -160,14 +161,14 @@
                         <div class="product-upper">
                             <img src="img/product-4.jpg" alt="">
                         </div>
-                        <h2><a href="single-product.html">Apple new mac book 2015 March :P</a></h2>
+                        <h2><a href="single-product.php">Apple new mac book 2015 March :P</a></h2>
                         <div class="product-carousel-price">
                             <ins>$899.00</ins> <del>$999.00</del>
                         </div>  
                         
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="single-product.html">Buy Now</a>
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="single-product.html">Auction</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="single-product.php">Buy Now</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="single-product.php">Auction</a>
                             <br><br>
                             <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Favourite</a>
                         </div>                       

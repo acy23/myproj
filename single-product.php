@@ -38,13 +38,13 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./home.html"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./home.php"><img src="img/logo.png"></a></h1>
                     </div>
                 </div>
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="profile.html">Profile<span class="cart-amunt"></span> </a>
+                        <a href="profile.php">Profile<span class="cart-amunt"></span> </a>
                     </div>
                 </div>
             </div>
@@ -64,13 +64,13 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.html">Home</a></li>
-                        <li><a href="listings.html">Listings</a></li>
-                        <li><a href="new_listing.html"> Create New Listing</a></li>
-                        <li><a href="messages.html"> My Messages</a></li>
-                        <li><a href="my_listings.html"> My Listings</a></li>
-                        <li><a href="my_bids.html"> My Bids</a></li>
-                        <li><a href="favs.html"> My Favorite Listings</a></li>
+                        <li class="active"><a href="home.php">Home</a></li>
+                        <li><a href="listings.php">Listings</a></li>
+                        <li><a href="new_listing.php"> Create New Listing</a></li>
+                        <li><a href="messages.php"> My Messages</a></li>
+                        <li><a href="my_listings.php"> My Listings</a></li>
+                        <li><a href="my_bids.php"> My Bids</a></li>
+                        <li><a href="favs.php"> My Favorite Listings</a></li>
                     </ul>
                 </div>  
             </div>

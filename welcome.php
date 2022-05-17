@@ -86,12 +86,12 @@
         </label>    
         <input type="Password" name="Pass" id="Pass" placeholder="Password">    
         <br><br>    
-        <a href="home.html"><input name="log" type="button" id="more" value="Login" onclick=""></a>   
+        <a href="home.php"><input name="log" type="button" id="more" value="Login" onclick=""></a>   
         <br><br>    
         <input type="checkbox" id="check"> 
         <span>Remember me</span>    
         <br><br>    
-        <a href="signup.html">Sign up!</a>  
+        <a href="signup.php">Sign up!</a>  
     </form>     
 </div>    
 </body>    

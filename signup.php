@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>  
 <html>  
 <head>  
@@ -51,12 +52,14 @@ hr {
   <div class="container">  
   <center>  <h1> Sign Up</h1> </center>  
   <hr>  
-  <label> Firstname </label>   
-<input type="text" name="firstname" placeholder= "Firstname" size="15" required />   
+  <label> Firstname: </label>   
+<input type="text" name="firstname" placeholder= "Firstname" size="15"/>   
 <label> Lastname: </label>   
-<input type="text" name="lastname" placeholder="Lastname" size="15" required />   
+<input type="text" name="lastname" placeholder="Lastname" size="15"/>   
 <label> Username: </label>    
 <input type="text" name="username" placeholder="Username" size="10"required />
+<label> Password: </label>   
+<input type="password" name="password" placeholder="Password" size="15" required />
 <label> Email address: </label>   
 <input type="text" name="email" placeholder= "E-mail address" size="15" required />   
 <label> Phone Number: </label>   
@@ -67,7 +70,7 @@ hr {
        id="avatar" name="avatar"
        accept="image/png, image/jpeg">
 
-<button type="submit" class="registerbtn">Register</button>    
+<input type="submit" class="registerbtn" value="REGISTER" name="submit">    
 </form>  
 </body>  
-</html>  
+</html> 

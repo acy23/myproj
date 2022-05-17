@@ -24,6 +24,13 @@
     <link rel="stylesheet" href="css/responsive.css">
 
    </head>
+    <style>
+        .myclass{
+            display:inline-block;
+            width: 80px;
+            height: 40px;
+        }
+    </style>
     <body>
     
     <div class="site-branding-area">
@@ -31,13 +38,13 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./home.html"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./home.php"><img src="img/logo.png"></a></h1>
                     </div>
                 </div>
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="profile.html">Profile<span class="cart-amunt"></span> </a>
+                        <a href="profile.php">Profile<span class="cart-amunt"></span> </a>
                     </div>
                 </div>
             </div>
@@ -57,56 +64,58 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.html">Home</a></li>
-                        <li><a href="listings.html">Listings</a></li>
-                        <li><a href="new_listing.html"> Create New Listing</a></li>
-                        <li><a href="messages.html"> My Messages</a></li>
-                        <li><a href="my_listings.html"> My Listings</a></li>
-                        <li><a href="my_bids.html"> My Bids</a></li>
-                        <li><a href="favs.html"> My Favorite Listings</a></li>
+                        <li class="active"><a href="home.php">Home</a></li>
+                        <li><a href="listings.php">Listings</a></li>
+                        <li><a href="new_listing.php"> Create New Listing</a></li>
+                        <li><a href="messages.php"> My Messages</a></li>
+                        <li><a href="my_listings.php"> My Listings</a></li>
+                        <li><a href="my_bids.php"> My Bids</a></li>
+                        <li><a href="favs.php"> My Favorite Listings</a></li>
                     </ul>
                 </div>  
             </div>
         </div>
     </div>
     <br><br>
-    <center><h2>Messages</h2></center>
+    <center><h2>My Favorite Listings</h2></center>
     <br><br>
     <div class="container">
         <table class="table table-striped">
             <thead>
             <tr>
                 
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Username</th>
-                <th scope="col">Message</th>
+                <th scope="col">ID</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Picture</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 
-                <td>Ahmet</td>
-                <td>Taş</td>
-                <td>atas</td>
-                <td>Urunuzu cok begendim</td>
+                <td><a href="single-product.php">01</a></td>
+                <td>Samsung</td>
+                <td><img src="img/product-2.jpg" alt="" border=3 height=50 width=120></img></td>
+                <td><input class='myclass' type='button' value='Delete'/></td>
             </tr>
             <tr>
                 
-                <td>Mehmet</td>
-                <td>Kaya</td>
-                <td>mkaya</td>
-                <td>Ara beni, numaram: _______</td>
+                <td><a href="single-product.php">007</a></td>
+                <td>Apple</td>
+                <td><img src="img/product-2.jpg" alt="" border=3 height=50 width=120></img></td>
+                <td><input class='myclass' type='button' value='Delete'/></td>
             </tr>
             <tr>
-                <td>Ayşe</td>
-                <td>Toprak</td>
-                <td>atoprak</td>
-                <td>En dusuk ne olur?</td>
+                <td><a href="single-product.php">999</a></td>
+                <td>Nokia</td>
+                <td><img src="img/product-2.jpg" alt="" border=3 height=50 width=120></img></td>
+                <td><input class='myclass' type='button' value='Delete'/></td>
             </tr>
             </tbody>
         </table>
+        <br><br>
     </div>
+
 
 
 
