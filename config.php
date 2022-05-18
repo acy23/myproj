@@ -1,8 +1,15 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root','','project_db');
+$dbhost = "localhost";
+$dbuser = "root";
+$pass = "";
+$db = "db";
 
-if($db->connect_errno > 0){
-	die('Unable to connect to database [' . $db->connect_error . ']');
+$con = mysqli_connect($dbhost,$dbuser,$pass,$db);
+if(mysqli_connect_errno()){
+    echo "Failed to connect!";
+    exit();
 }
+echo "connected to db";
+
 ?>

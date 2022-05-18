@@ -1,6 +1,4 @@
-<?php 
-require_once "config.php";
-?>
+<?php include("scripts/reachaccess.php") ?>
 
 <!DOCTYPE html>
 
@@ -38,12 +36,20 @@ require_once "config.php";
                         <h1><a href="./index.php"><img src="img/logo.png"></a></h1>
                     </div>
                 </div>
+
+                <div class="row-sm-6">
+                    <div class="shopping-item">
+                        <a href="scripts/logout.php">Logout<span class="cart-amunt"></span> </a>
+                    </div>
+                </div>
                 
-                <div class="col-sm-6">
+                <div class="row-sm-6">
                     <div class="shopping-item">
                         <a href="profile.php">Profile<span class="cart-amunt"></span> </a>
                     </div>
                 </div>
+
+                
             </div>
         </div>
     </div> <!-- End site branding area -->
