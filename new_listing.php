@@ -5,7 +5,6 @@
 
 ?>
 
-<?php echo $user_data['username']; ?>
 
 <?php
     if (isset($_GET['Message'])) {
@@ -101,6 +100,10 @@
 	<center>
 		
 		<form action="scripts/add_product.php" method="post" enctype="multipart/form-data">
+			<label>Name   </label>   
+				<input type="text" name="name" placeholder="Name">
+			<br>
+			<br>
 			<label for="listing">Listing Type   </label>
 				<select id="listing" name="listing">
 					<option value="listing">Listing</option>

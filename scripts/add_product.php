@@ -10,17 +10,14 @@
     $brand = $_POST['brand'];
     $description = $_POST['description'];
     $price = $_POST['price'];
+    $name = $_POST['name'];
     //$image = $_POST['image'];
 
     $user_id = $user_data['id'];
-    
-    if ($listing == "Auction"){
+    echo $listing;
+    if ($listing == "auction"){
         $is_auction = 1;
         $is_listing = 0;
-    }
-    else{
-        $is_auction = 0;
-        $is_listing = 1;
     }
 
     if (isset($_POST['submit']) && isset($_FILES['image'])){
@@ -47,8 +44,8 @@
                     move_uploaded_file($tmp_name, $img_upload_path);
    
                     // Insert into Database
-                    $sql = "insert into product (category,conditionn,brand,image,description,is_listing,is_auction,price,user_id)
-                            values ('$category','$condition','$brand','$new_img_name','$description',$is_listing,$is_auction,$price,$user_id)";
+                    $sql = "insert into product (category,conditionn,brand,image,description,is_listing,is_auction,price,user_id,name)
+                            values ('$category','$condition','$brand','$new_img_name','$description',$is_listing,$is_auction,$price,$user_id,'$name')";
                     mysqli_query($con, $sql);
                     $Message = "Product successfully created. You can check it here!";
                     header("Location: ../my_listings.php?Message=" . urlencode($Message));

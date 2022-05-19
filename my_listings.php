@@ -1,3 +1,23 @@
+<?php 
+    session_start();
+    include("scripts/reachaccess.php"); 
+    include("scripts/userdata.php"); 
+
+?>
+<?php
+    if (isset($_GET['Message'])) {
+        print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
+    }
+    
+    if (isset($_GET['product_id'])){
+        $product_id = $_GET['product_id'];
+        $delete = mysqli_query($con,"DELETE FROM product WHERE product_id = $product_id");
+        $Message = "Product deleted!";
+        header("Location:my_listings.php?Message=" . urlencode($Message));
+    }
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -5,7 +25,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ezBUYo</title>
+    <title>ezBUY</title>
     
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -31,7 +51,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./home.php"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./index.php"><img src="img/logo.png"></a></h1>
                     </div>
                 </div>
                 
@@ -57,7 +77,7 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.php">Home</a></li>
+                        <li class="active"><a href="index.php">Home</a></li>
                         <li><a href="listings.php">Listings</a></li>
                         <li><a href="new_listing.php"> Create New Listing</a></li>
                         <li><a href="messages.php"> My Messages</a></li>
@@ -72,6 +92,15 @@
     <br><br>
     <center><h2>My Listings</h2></center>
     <br><br>
+    <?php
+    $user_id = $user_data['id'];
+    $sql = "SELECT * FROM product WHERE user_id=$user_id";
+    $result = mysqli_query($con,$sql);
+
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_array($result)){
+
+    ?>
     <div class="container">
         <table class="table table-striped">
             <thead>
@@ -84,31 +113,21 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                
-                <td><a href="single-product.php">01</a></td>
-                <td>Samsung</td>
-                <td>4000</td>
-                <td><img src="img/product-2.jpg" alt="" border=3 height=50 width=120></img></td>
-            </tr>
-            <tr>
-                
-                <td><a href="single-product.php">007</a></td>
-                <td>Apple</td>
-                <td>10000</td>
-                <td><img src="img/product-1.jpg" alt="" border=3 height=50 width=120></img></td>
-            </tr>
-            <tr>
-                <td><a href="single-product.php">999</a></td>
-                <td>Nokia</td>
-                <td>1000</td>
-                <td><img src="img/product-3.jpg" alt="" border=3 height=50 width=120></img></td>
-            </tr>
+                <tr>
+                    
+                    <td><a href="single-product.php"><?php echo $row['product_id'] ?></a></td>
+                    <td><?php echo $row['brand'] ?></td>
+                    <td><?php echo $row['price'] ?></td>
+                    <td><img src="img/<?php echo $row['image'] ?>" alt="" border=3 height=50 width=120></img></td>
+                    <td><a href="my_listings.php?product_id=<?php echo $row['product_id'] ?>" class='btn btn-primary btn'>Delete</a></td>    
+                    
+                </tr>
             </tbody>
         </table>
         <br><br>
     </div>
-
+    <?php } } ?>
+    
 
 
 
