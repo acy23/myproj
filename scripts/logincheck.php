@@ -23,6 +23,7 @@ session_start();
 					if($user_data['passwrd'] === $password)
 					{
 						$_SESSION["id"] = $user_data["id"];
+						$_SESSION["username"] = $user_data["username"];
                         include("../userdata.php");
                         header("Location:../index.php");
 						die;

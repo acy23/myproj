@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    include("scripts/reachaccess.php"); 
+    include("scripts/userdata.php"); 
+
+?>
+<?php echo $user_data['name']; ?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -31,15 +38,23 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./home.php"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./index.php"><img src="img/logo.png"></a></h1>
+                    </div>
+                </div>
+
+                <div class="row-sm-6">
+                    <div class="shopping-item">
+                        <a href="scripts/logout.php">Logout<span class="cart-amunt"></span> </a>
                     </div>
                 </div>
                 
-                <div class="col-sm-6">
+                <div class="row-sm-6">
                     <div class="shopping-item">
                         <a href="profile.php">Profile<span class="cart-amunt"></span> </a>
                     </div>
                 </div>
+
+                
             </div>
         </div>
     </div> <!-- End site branding area -->
@@ -57,7 +72,7 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.php">Home</a></li>
+                        <li class="active"><a href="index.php">Home</a></li>
                         <li><a href="listings.php">Listings</a></li>
                         <li><a href="new_listing.php"> Create New Listing</a></li>
                         <li><a href="messages.php"> My Messages</a></li>
@@ -76,13 +91,16 @@
             <div class="col-md-7">
                 <div class="card p-3 py-4">
                     <div class="text-center"> <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"> </div>
-                    <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white"></span><br>
-                        <h5 class="mt-2 mb-0">Fatih Cerit (fcerit)</h5> <span>Expert Seller</span><br>
-                        <h5 class="mt-2 mb-0"><span>fcerit@email.com</span><br>
-                        <h5 class="mt-2 mb-0"><span>999-000-111</span><br>
-                        <br>
-                        <br>
-                        <div class="px-4 mt-1">
+                        <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white"></span><br>
+                        <label>First name:</label>
+                        <h5 class="mt-2 mb-0"><?php echo $user_data['name'] ?></h5><br>
+                        <label>Last name:</label>
+                        <h5 class="mt-2 mb-0"><?php echo $user_data['surname'] ?></h5><br>
+                        <label>Username:</label>
+                        <h5 class="mt-2 mb-0"><span><?php echo $user_data['email'] ?></span><br><br>
+                        <label>Phone:</label>
+                        <h5 class="mt-2 mb-0"><span><?php echo $user_data['phone'] ?></span>
+                    
                             
                         </div>
         

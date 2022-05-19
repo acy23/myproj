@@ -2,6 +2,8 @@
 
     include("../config.php");
 
+    session_start();
+
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $username = $_POST['username'];
@@ -24,8 +26,8 @@
 
             $query="INSERT INTO users (name,surname,email,username,passwrd,phone,image) VALUES ('$name', '$surname', '$email', '$username', $password , $phone ,'')";
             $sql=mysqli_query($con,$query)or die("Could Not Perform the Query");
-            $Message = "You successfully recorded to db!!";
-            header("Location: ../welcome.php?Message=" . urlencode($Message));
+            $_SESSION['username'] = $username;
+            header("Location: ../index.php");
             
     
         }

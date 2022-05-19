@@ -1,5 +1,10 @@
-<?php include("scripts/reachaccess.php") ?>
+<?php 
+    session_start();
+    include("scripts/reachaccess.php"); 
+    include("scripts/userdata.php"); 
+?>
 
+<?php echo $user_data['name']; ?>
 <!DOCTYPE html>
 
 <html lang="en">
