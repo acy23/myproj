@@ -1,10 +1,9 @@
 <?php 
     session_start();
-    include("scripts/reachaccess.php"); 
-    include("scripts/userdata.php"); 
-
+    include("config.php");
+    include("scripts/reachaccess.php");
 ?>
-<?php echo $user_data['name']; ?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -72,13 +71,14 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php">Home</a></li>
+                        <li><a href="index.php">Home</a></li>
                         <li><a href="listings.php">Listings</a></li>
                         <li><a href="new_listing.php"> Create New Listing</a></li>
                         <li><a href="messages.php"> My Messages</a></li>
                         <li><a href="my_listings.php"> My Listings</a></li>
                         <li><a href="my_bids.php"> My Bids</a></li>
                         <li><a href="favs.php"> My Favorite Listings</a></li>
+                        <li><a href="my_purchases.php"> My Purchases</a></li>
                     </ul>
                 </div>  
             </div>
@@ -93,13 +93,13 @@
                     <div class="text-center"> <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"> </div>
                         <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white"></span><br>
                         <label>First name:</label>
-                        <h5 class="mt-2 mb-0"><?php echo $user_data['name'] ?></h5><br>
+                        <h5 class="mt-2 mb-0"></h5><br>
                         <label>Last name:</label>
-                        <h5 class="mt-2 mb-0"><?php echo $user_data['surname'] ?></h5><br>
+                        <h5 class="mt-2 mb-0"></h5><br>
                         <label>Username:</label>
-                        <h5 class="mt-2 mb-0"><span><?php echo $user_data['email'] ?></span><br><br>
+                        <h5 class="mt-2 mb-0"><span></span><br><br>
                         <label>Phone:</label>
-                        <h5 class="mt-2 mb-0"><span><?php echo $user_data['phone'] ?></span>
+                        <h5 class="mt-2 mb-0"><span></span>
                     
                             
                         </div>

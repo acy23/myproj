@@ -1,10 +1,15 @@
 <?php 
     session_start();
-    include("scripts/reachaccess.php"); 
-    include("scripts/userdata.php"); 
+    include("config.php");
+    include("scripts/reachaccess.php");
 
 ?>
-
+<?php
+    if (isset($_GET['mssg'])) {
+        print '<script type="text/javascript">alert("' . $_GET['mssg'] . '");</script>';
+    }
+    
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,13 +96,14 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php">Home</a></li>
-                        <li><a href="listings.php">Listings</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li class="active"><a href="listings.php">Listings</a></li>
                         <li><a href="new_listing.php"> Create New Listing</a></li>
                         <li><a href="messages.php"> My Messages</a></li>
                         <li><a href="my_listings.php"> My Listings</a></li>
                         <li><a href="my_bids.php"> My Bids</a></li>
                         <li><a href="favs.php"> My Favorite Listings</a></li>
+                        <li><a href="my_purchases.php"> My Purchases</a></li>
                     </ul>
                 </div>  
             </div>
@@ -129,7 +135,7 @@
     <div class="container">
         <div class="row">
             <?php
-            $user_id = $user_data['id'];
+            $user_id = $_SESSION['id'];
             $sql = "SELECT * FROM product";
             $result = mysqli_query($con,$sql);
 
@@ -144,14 +150,14 @@
                 <div class="product-upper">
                     <img src="img/<?php echo $row['image'] ?>" alt="">
                 </div>
-                <h2><a href="single-product.php"><?php echo $row['name'] ?></a></h2>
+                <h2><a href="single-product.php?product_id=<?php echo $row['product_id'] ?>"><?php echo $row['name'] ?></a></h2>
                 <div class="product-carousel-price">
                     <ins>Price: <?php echo $row['price'] ?>$</ins> 
                 </div>  
                 <div class="product-option-shop">
                     <?php if($row['is_listing'] == 1): ?>
                         
-                        <a class="add_to_cart_button" href="single-product.php">Buy Now</a>
+                        <a class="add_to_cart_button" href="scripts/purchase.php?product_id=<?php echo $row['product_id'] ?>&user_id=<?php echo $user_id ?>">Buy Now</a>
                         
                     <?php elseif($row['is_auction'] == 1): ?>
                         
@@ -160,7 +166,7 @@
                     <br><br>
                     <?php endif; ?>
 
-                        <a class="add_to_cart_button" href="/canvas/shop/?add-to-cart=70">Favourite</a>   
+                        <a class="add_to_cart_button" href="scripts/addtofavs.php?product_id=<?php echo $row['product_id'] ?>&user_id=<?php echo $user_id ?>">Favourite</a>   
                 </div>                       
                 
             </div>

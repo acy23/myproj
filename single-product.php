@@ -1,3 +1,49 @@
+<?php 
+    session_start();
+    include("config.php");
+    include("scripts/reachaccess.php");
+
+?>
+<?php
+    
+    if (isset($_GET['product_id'])){
+        $product_id = $_GET['product_id'];
+
+        $result = mysqli_query($con,"SELECT * FROM product WHERE product_id = $product_id limit 1");
+        $row = mysqli_fetch_array($result);
+
+        //assign variables for product
+        $name = $row['name'];
+        $price = $row['price'];
+        $description = $row['description'];
+        $category = $row['category'];
+        $condition = $row['conditionn'];
+        $brand = $row['brand'];
+        $image = $row['image'];
+        $is_listing = $row['is_listing'];
+        $is_auction = $row['is_auction'];
+        $created_at = $row['created_at'];
+        $user_id = $row['user_id'];
+
+        $result2 = mysqli_query($con,"SELECT * FROM users WHERE id = $user_id limit 1");
+        $row2 = mysqli_fetch_array($result2);
+        $seller_username = $row2['username'];
+        //assign variables for user
+
+        $id = $_SESSION['id'];
+        $result3 = mysqli_query($con,"SELECT * FROM users WHERE id = $id limit 1");
+        $row3 = mysqli_fetch_array($result3);
+
+        $user_name = $_SESSION['name'];
+        $username = $_SESSION['username'];
+        $user_email = $_SESSION['email'];
+        $user_phone = $_SESSION['phone'];
+
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,7 +84,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./home.php"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./index.php"><img src="img/logo.png"></a></h1>
                     </div>
                 </div>
                 
@@ -64,13 +110,14 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.php">Home</a></li>
+                        <li><a href="index.php">Home</a></li>
                         <li><a href="listings.php">Listings</a></li>
                         <li><a href="new_listing.php"> Create New Listing</a></li>
                         <li><a href="messages.php"> My Messages</a></li>
                         <li><a href="my_listings.php"> My Listings</a></li>
                         <li><a href="my_bids.php"> My Bids</a></li>
                         <li><a href="favs.php"> My Favorite Listings</a></li>
+                        <li><a href="my_purchases.php"> My Purchases</a></li>
                     </ul>
                 </div>  
             </div>
@@ -101,28 +148,22 @@
                             <div class="col-sm-6">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img src="img/product-2.jpg" alt="">
-                                    </div>
-                                    
-                                    <div class="product-gallery">
-                                        <img src="img/product-thumb-1.jpg" alt="">
-                                        <img src="img/product-thumb-2.jpg" alt="">
-                                        <img src="img/product-thumb-3.jpg" alt="">
+                                        <img src="img/<?php echo $image ?>" alt="">
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="col-sm-6">
                                 <div class="product-inner">
-                                    <h2 class="product-name">Sony Smart TV - 2015</h2>
+                                    <h2 class="product-name"><?php echo $name ?></h2>
                                     <div class="product-inner-price">
-                                        <ins>$700.00</ins> <del>$100.00</del>
+                                        <ins><?php echo $price ?>$ </ins> 
                                     </div>                                 
                                     
                                     <div class="product-inner-category">
-                                        <p>Product ID: 007 , Listing date: 01.01.2022 </p>
+                                        <p>Product ID: <?php echo $product_id ?> , Listing date: <?php echo $created_at ?> </p>
                                         <br>
-                                        <p>Seller username: ycelik</p>
+                                        <p>Seller username: <?php echo $seller_username ?></p>
                                     </div> 
                                     
                                     <div role="tabpanel">
@@ -135,11 +176,15 @@
                                             <div role="tabpanel" class="tab-pane fade" id="profile">
                                               
                                                 <div class="submit-review">
-                                                    <p><label for="name">Name</label> <input name="name" type="text"></p>
-                                                    <p><label for="email">Email</label> <input name="email" type="email"></p>
-                                                
-                                                    <p><label for="review">Message</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
-                                                    <p><input type="submit" value="Submit"></p>
+                                                    <form method="post" action="scripts/sendmessage.php">
+                                                        <p><label for="product_id"></label> <input name="product_id" type="hidden" value="<?php echo $product_id ?>"></p>
+                                                        <p><label for="to_user"></label> <input name="to_user" type="hidden" value="<?php echo $user_id ?>"></p>
+                                                        <p><label for="name">Name</label> <input name="name" type="text" value="<?php echo $username ?>"></p>
+                                                        <p><label for="email">Email</label> <input name="email" type="email" value="<?php echo $user_email ?>"></p>
+                                                    
+                                                        <p><label for="review">Message</label> <textarea name="message" id="message" cols="30" rows="10"></textarea></p>
+                                                        <p><input type="submit" value="Submit" name="submit"></p>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

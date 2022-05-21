@@ -1,8 +1,7 @@
 <?php 
     session_start();
-    include("scripts/reachaccess.php"); 
-    include("scripts/userdata.php"); 
-
+	include("config.php");
+	include("scripts/reachaccess.php");
 ?>
 
 
@@ -73,13 +72,14 @@
 				</div> 
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.php">Home</a></li>
+						<li><a href="index.php">Home</a></li>
 						<li><a href="listings.php">Listings</a></li>
-						<li><a href="new_listing.php"> Create New Listing</a></li>
+						<li class="active"><a href="new_listing.php"> Create New Listing</a></li>
 						<li><a href="messages.php"> My Messages</a></li>
 						<li><a href="my_listings.php"> My Listings</a></li>
 						<li><a href="my_bids.php"> My Bids</a></li>
 						<li><a href="favs.php"> My Favorite Listings</a></li>
+						<li><a href="my_purchases.php"> My Purchases</a></li>
 					</ul>
 				</div>  
 			</div>
@@ -90,7 +90,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="product-bit-title text-center">
-						<h2>Create New Listing</h2>
+						<h2>Create New Listing/Auction</h2>
 					</div>
 				</div>
 			</div>
@@ -104,7 +104,7 @@
 				<input type="text" name="name" placeholder="Name">
 			<br>
 			<br>
-			<label for="listing">Listing Type   </label>
+			<label for="listing">Type   </label>
 				<select id="listing" name="listing">
 					<option value="listing">Listing</option>
 					<option value="auction">Auction</option>

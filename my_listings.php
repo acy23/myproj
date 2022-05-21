@@ -1,19 +1,17 @@
 <?php 
     session_start();
-    include("scripts/reachaccess.php"); 
-    include("scripts/userdata.php"); 
-
+    include("config.php");
+    include("scripts/reachaccess.php");
 ?>
 <?php
-    if (isset($_GET['Message'])) {
-        print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
-    }
-    
     if (isset($_GET['product_id'])){
         $product_id = $_GET['product_id'];
         $delete = mysqli_query($con,"DELETE FROM product WHERE product_id = $product_id");
         $Message = "Product deleted!";
         header("Location:my_listings.php?Message=" . urlencode($Message));
+    }
+    if (isset($_GET['Message'])) {
+        print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
     }
 
 ?>
@@ -77,13 +75,14 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php">Home</a></li>
+                        <li><a href="index.php">Home</a></li>
                         <li><a href="listings.php">Listings</a></li>
                         <li><a href="new_listing.php"> Create New Listing</a></li>
                         <li><a href="messages.php"> My Messages</a></li>
-                        <li><a href="my_listings.php"> My Listings</a></li>
+                        <li class="active"><a href="my_listings.php"> My Listings</a></li>
                         <li><a href="my_bids.php"> My Bids</a></li>
                         <li><a href="favs.php"> My Favorite Listings</a></li>
+                        <li><a href="my_purchases.php"> My Purchases</a></li>
                     </ul>
                 </div>  
             </div>
@@ -93,8 +92,9 @@
     <center><h2>My Listings</h2></center>
     <br><br>
     <?php
-    $user_id = $user_data['id'];
-    $sql = "SELECT * FROM product WHERE user_id=$user_id";
+    $user_id = $_SESSION['id'];
+
+    $sql = "SELECT * FROM product WHERE user_id = $user_id";
     $result = mysqli_query($con,$sql);
 
     if(mysqli_num_rows($result) > 0){
@@ -115,9 +115,9 @@
             <tbody>
                 <tr>
                     
-                    <td><a href="single-product.php"><?php echo $row['product_id'] ?></a></td>
+                    <td><a href="single-product.php?product_id=<?php echo $row['product_id'] ?>"><?php echo $row['product_id'] ?></a></td>
                     <td><?php echo $row['brand'] ?></td>
-                    <td><?php echo $row['price'] ?></td>
+                    <td><?php echo $row['price'] ?>$</td>
                     <td><img src="img/<?php echo $row['image'] ?>" alt="" border=3 height=50 width=120></img></td>
                     <td><a href="my_listings.php?product_id=<?php echo $row['product_id'] ?>" class='btn btn-primary btn'>Delete</a></td>    
                     

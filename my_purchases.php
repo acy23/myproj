@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    include("config.php");
+    include("scripts/reachaccess.php");
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -24,6 +30,13 @@
     <link rel="stylesheet" href="css/responsive.css">
 
    </head>
+    <style>
+        .myclass{
+            display:inline-block;
+            width: 80px;
+            height: 40px;
+        }
+    </style>
     <body>
     
     <div class="site-branding-area">
@@ -62,16 +75,16 @@
                         <li><a href="new_listing.php"> Create New Listing</a></li>
                         <li><a href="messages.php"> My Messages</a></li>
                         <li><a href="my_listings.php"> My Listings</a></li>
-                        <li class="active"><a href="my_bids.php"> My Bids</a></li>
+                        <li><a href="my_bids.php"> My Bids</a></li>
                         <li><a href="favs.php"> My Favorite Listings</a></li>
-                        <li><a href="my_purchases.php"> My Purchases</a></li>
+                        <li class="active"><a href="my_purchases.php"> My Purchases</a></li>
                     </ul>
                 </div>  
             </div>
         </div>
     </div>
     <br><br>
-    <center><h2>My Bids</h2></center>
+    <center><h2>My Favorite Listings</h2></center>
     <br><br>
     <div class="container">
         <table class="table table-striped">
@@ -80,35 +93,44 @@
                 
                 <th scope="col">ID</th>
                 <th scope="col">Brand</th>
-                <th scope="col">Last Bid</th>
-                <th scope="col">My Last Bid</th>
+                <th scope="col">Picture</th>
+                <th scope="col">Price</th>
             </tr>
             </thead>
+            <?php
+            $user_id = $_SESSION['id'];
+            $sql = "SELECT * FROM purchases WHERE user_id=$user_id";
+            $result = mysqli_query($con,$sql);
+
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_array($result)){
+
+                    $product_id = $row['product_id'];
+                    //echo $product_id;
+                    $sql2 = "SELECT * FROM users WHERE id=$user_id";
+                    $result2 = mysqli_query($con,$sql2);
+                    $row2= mysqli_fetch_array($result2);
+
+                    $sql3 = "SELECT * FROM product WHERE product_id=$product_id";
+                    $result3 = mysqli_query($con,$sql3);
+                    $row3= mysqli_fetch_array($result3);
+
+            ?>
             <tbody>
-            <tr>
-                
-                <td><a href="single-product.php">01</a></td>
-                <td>Samsung</td>
-                <td>4000</td>
-                <td>3500</td>
-            </tr>
-            <tr>
-                
-                <td><a href="single-product.php">007</a></td>
-                <td>Apple</td>
-                <td>10000</td>
-                <td>9100</td>
-            </tr>
-            <tr>
-                <td><a href="single-product.php">999</a></td>
-                <td>Nokia</td>
-                <td>1500</td>
-                <td>1500</td>
-            </tr>
+                <tr>
+                    
+                    <td><a href="single-product.php?product_id=<?php echo $product_id ?>"><?php echo $product_id ?></a></td>
+                    <td><?php echo $row3['brand'] ?></td>
+                    <td><img src="img/<?php echo $row3['image'] ?>" alt="" border=3 height=50 width=120></img></td>
+                    <td><?php echo $row3['price'] ?></td>
+                    
+                </tr>
             </tbody>
+            <?php } } ?>
         </table>
         <br><br>
     </div>
+
 
 
 

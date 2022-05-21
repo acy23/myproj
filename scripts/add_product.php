@@ -1,8 +1,8 @@
 <?php
-
-    include("../config.php");
-    include("userdata.php");
     session_start();
+    include("../config.php");
+    include("reachaccess.php");
+    
 
     $listing = $_POST['listing'];
     $category = $_POST['category'];
@@ -13,19 +13,23 @@
     $name = $_POST['name'];
     //$image = $_POST['image'];
 
-    $user_id = $user_data['id'];
-    echo $listing;
+    $user_id = $_SESSION['id'];
+
     if ($listing == "auction"){
         $is_auction = 1;
         $is_listing = 0;
+        
     }
-
+    else{
+        $is_auction = 0;
+        $is_listing = 1;
+    }
     if (isset($_POST['submit']) && isset($_FILES['image'])){
         $img_name = $_FILES['image']['name'];
         $img_size = $_FILES['image']['size'];
         $tmp_name = $_FILES['image']['tmp_name'];
         $error = $_FILES['image']['error'];
-       
+
         if ($error == 0){
             if ($img_size > 125000){
                 $em = "Sorry, your file is too large.";
@@ -42,11 +46,22 @@
                     $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
                     $img_upload_path = '../img/'.$new_img_name;
                     move_uploaded_file($tmp_name, $img_upload_path);
-   
+                    echo $listing;
+                    echo $category;
+                    echo $condition;
+                    echo $brand;
+                    echo $new_img_name;
+                    echo $description;
+                    echo $is_listing;
+                    echo $is_auction;
+                    echo $price;
+                    echo $user_id;
+                    echo $name; 
                     // Insert into Database
-                    $sql = "insert into product (category,conditionn,brand,image,description,is_listing,is_auction,price,user_id,name)
-                            values ('$category','$condition','$brand','$new_img_name','$description',$is_listing,$is_auction,$price,$user_id,'$name')";
-                    mysqli_query($con, $sql);
+                    $sql = "INSERT INTO product (category,conditionn,brand,image,description,is_listing,is_auction,price,user_id,name)
+                            VALUES ('$category','$condition','$brand','$new_img_name','$description',$is_listing,$is_auction,$price,$user_id,'$name')";
+                    $qq = mysqli_query($con, $sql);
+
                     $Message = "Product successfully created. You can check it here!";
                     header("Location: ../my_listings.php?Message=" . urlencode($Message));
                 }

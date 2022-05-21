@@ -1,7 +1,7 @@
 <?php 
-session_start();
-
+	session_start();
 	include("../config.php");
+	include("reachaccess.php");
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
@@ -24,7 +24,12 @@ session_start();
 					{
 						$_SESSION["id"] = $user_data["id"];
 						$_SESSION["username"] = $user_data["username"];
-                        include("../userdata.php");
+						$_SESSION["name"] = $user_data["username"];
+						$_SESSION["surname"] = $user_data["surname"];
+						$_SESSION["email"] = $user_data["email"];
+						$_SESSION["phone"] = $user_data["phone"];
+
+  
                         header("Location:../index.php");
 						die;
 					}

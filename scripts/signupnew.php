@@ -1,8 +1,8 @@
 <?php
 
-    include("../config.php");
-
     session_start();
+    include("../config.php");
+    include("reachaccess.php");
 
     $name = $_POST['name'];
     $surname = $_POST['surname'];

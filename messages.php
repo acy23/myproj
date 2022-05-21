@@ -1,3 +1,24 @@
+<?php
+    session_start();
+    include("config.php");
+    include("scripts/reachaccess.php");
+?>
+<?php
+    if (isset($_GET['Message'])) {
+        print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
+    }
+    
+    if (isset($_GET['message_id'])){
+        $message_id = $_GET['message_id'];
+        $delete = mysqli_query($con,"DELETE FROM messages WHERE message_id = $message_id");
+        $Message = "Message deleted!";
+        header("Location:messages.php?Message=" . urlencode($Message));
+    }
+
+
+?>
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -31,7 +52,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./home.php"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./index.php"><img src="img/logo.png"></a></h1>
                     </div>
                 </div>
                 
@@ -57,13 +78,14 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.php">Home</a></li>
+                        <li><a href="index.php">Home</a></li>
                         <li><a href="listings.php">Listings</a></li>
                         <li><a href="new_listing.php"> Create New Listing</a></li>
-                        <li><a href="messages.php"> My Messages</a></li>
+                        <li class="active"><a href="messages.php"> My Messages</a></li>
                         <li><a href="my_listings.php"> My Listings</a></li>
                         <li><a href="my_bids.php"> My Bids</a></li>
                         <li><a href="favs.php"> My Favorite Listings</a></li>
+                        <li><a href="my_purchases.php"> My Purchases</a></li>
                     </ul>
                 </div>  
             </div>
@@ -72,39 +94,42 @@
     <br><br>
     <center><h2>Messages</h2></center>
     <br><br>
+
     <div class="container">
         <table class="table table-striped">
             <thead>
+
             <tr>
-                
                 <th scope="col">First name</th>
                 <th scope="col">Last name</th>
                 <th scope="col">Username</th>
+                <th scope="col">Product</th>
                 <th scope="col">Message</th>
             </tr>
             </thead>
+            <?php
+            $user_id = $_SESSION['id'];
+            $sql = "SELECT * FROM messages WHERE to_id=$user_id";
+            $result = mysqli_query($con,$sql);
+
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_array($result)){
+                    $sender_id = $row['from_id'];
+                    $sql2 = "SELECT * FROM users WHERE id=$sender_id";
+                    $result2 = mysqli_query($con,$sql2);
+                    $row2= mysqli_fetch_array($result2);
+            ?>
             <tbody>
-            <tr>
-                
-                <td>Ahmet</td>
-                <td>Taş</td>
-                <td>atas</td>
-                <td>Urunuzu cok begendim</td>
-            </tr>
-            <tr>
-                
-                <td>Mehmet</td>
-                <td>Kaya</td>
-                <td>mkaya</td>
-                <td>Ara beni, numaram: _______</td>
-            </tr>
-            <tr>
-                <td>Ayşe</td>
-                <td>Toprak</td>
-                <td>atoprak</td>
-                <td>En dusuk ne olur?</td>
-            </tr>
+                <tr>                
+                    <td><?php echo $row2['name'] ?></td>
+                    <td><?php echo $row2['surname'] ?></td>
+                    <td><?php echo $row2['username'] ?></td>
+                    <td><a href="single-product.php?product_id=<?php echo $row['product_id'] ?>"><?php echo $row['product_id'] ?></td>
+                    <td><?php echo $row['message'] ?></td>
+                    <td><a href="messages.php?message_id=<?php echo $row['message_id'] ?>" class='btn btn-primary btn'>Delete</a><br></td>
+                </tr>
             </tbody>
+            <?php } } ?>
         </table>
     </div>
 

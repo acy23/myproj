@@ -1,7 +1,7 @@
 <?php
     session_start();
-    include("config.php");
-    #include("scripts/userdata.php");
+    include("../config.php");
+    //include("scripts/userdata.php");
     
     if (!isset($_SESSION['username'])){
         
