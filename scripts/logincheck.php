@@ -28,6 +28,7 @@
 						$_SESSION["surname"] = $user_data["surname"];
 						$_SESSION["email"] = $user_data["email"];
 						$_SESSION["phone"] = $user_data["phone"];
+						$_SESSION["image"] = $user_data["image"];
 
   
                         header("Location:../index.php");

@@ -13,7 +13,7 @@ if(isset($_SESSION['id']) or isset($_SESSION['username']))
 	unset($_SESSION['surname']);
 	unset($_SESSION['email']);
 	unset($_SESSION['phone']);
-
+	unset($_SESSION['image']);
 }
 
 

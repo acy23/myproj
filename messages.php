@@ -100,6 +100,7 @@
             <thead>
 
             <tr>
+                <th scope="col">Date</th>
                 <th scope="col">First name</th>
                 <th scope="col">Last name</th>
                 <th scope="col">Username</th>
@@ -118,9 +119,11 @@
                     $sql2 = "SELECT * FROM users WHERE id=$sender_id";
                     $result2 = mysqli_query($con,$sql2);
                     $row2= mysqli_fetch_array($result2);
+                
             ?>
             <tbody>
-                <tr>                
+                <tr> 
+                    <td><?php echo $row['created_at'] ?></td>               
                     <td><?php echo $row2['name'] ?></td>
                     <td><?php echo $row2['surname'] ?></td>
                     <td><?php echo $row2['username'] ?></td>

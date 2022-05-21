@@ -34,6 +34,12 @@
         $result3 = mysqli_query($con,"SELECT * FROM users WHERE id = $id limit 1");
         $row3 = mysqli_fetch_array($result3);
 
+        $sql4 = "SELECT * FROM bids WHERE product_id=$product_id ORDER BY (bid_amount) DESC";
+        $result4 = mysqli_query($con,$sql4);
+        $firstrow = mysqli_fetch_assoc($result4);
+        $highest_bid = $firstrow['bid_amount'];
+
+
         $user_name = $_SESSION['name'];
         $username = $_SESSION['username'];
         $user_email = $_SESSION['email'];
@@ -156,14 +162,28 @@
                             <div class="col-sm-6">
                                 <div class="product-inner">
                                     <h2 class="product-name"><?php echo $name ?></h2>
-                                    <div class="product-inner-price">
-                                        <ins><?php echo $price ?>$ </ins> 
-                                    </div>                                 
-                                    
+                                        <?php if($is_listing ==1): ?>
+                                            <div class="product-inner-price">
+                                                <ins>Price: <?php echo $price ?>$ </ins> 
+                                            </div>                                 
+                                        <?php elseif($is_auction ==1): ?>
+                                            <div class="product-inner-price">
+                                                <ins>Highest bid: <?php echo $highest_bid ?>$ </ins>
+                                            </div>   
+                                        <?php endif; ?>
                                     <div class="product-inner-category">
                                         <p>Product ID: <?php echo $product_id ?> , Listing date: <?php echo $created_at ?> </p>
                                         <br>
                                         <p>Seller username: <?php echo $seller_username ?></p>
+                                        <?php if($is_auction==1): ?>
+                                            <p>Previous Bids: </p>
+                                            <?php while($ress=mysqli_fetch_assoc($result4)){
+                                                $bid = $ress['bid_amount'];
+
+                                            ?>
+                                            <p><?php echo $bid ?></p> 
+                                            <?php } ?>
+                                        <?php endif; ?>
                                     </div> 
                                     
                                     <div role="tabpanel">

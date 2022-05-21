@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    include("config.php");
+    include("scripts/reachaccess.php");
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -77,35 +83,35 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                
-                <th scope="col">ID</th>
-                <th scope="col">Brand</th>
-                <th scope="col">Last Bid</th>
-                <th scope="col">My Last Bid</th>
+                <th scope="col">Product ID</th>
+                <th scope="col">Highest Bid</th>
+                <th scope="col">Bid Amount</th>
+                <th scope="col">Picture</th>
             </tr>
             </thead>
+            <?php
+            $user_id = $_SESSION['id'];
+
+            $result = mysqli_query($con,"SELECT * FROM bids WHERE user_id=$user_id");
+            while($row = mysqli_fetch_array($result)){
+                $product_id = $row['product_id'];
+
+                $result2 = mysqli_query($con,"SELECT * FROM product WHERE product_id=$product_id");
+                $row2 = mysqli_fetch_array($result2);
+    
+                $result3 = mysqli_query($con,"SELECT * FROM bids WHERE product_id=$product_id ORDER BY bid_amount DESC");
+                $row3 = mysqli_fetch_array($result3);
+            
+            ?>
             <tbody>
-            <tr>
-                
-                <td><a href="single-product.php">01</a></td>
-                <td>Samsung</td>
-                <td>4000</td>
-                <td>3500</td>
-            </tr>
-            <tr>
-                
-                <td><a href="single-product.php">007</a></td>
-                <td>Apple</td>
-                <td>10000</td>
-                <td>9100</td>
-            </tr>
-            <tr>
-                <td><a href="single-product.php">999</a></td>
-                <td>Nokia</td>
-                <td>1500</td>
-                <td>1500</td>
-            </tr>
+                <tr>
+                    <td><a href="single-product.php?product_id=<?php echo $row['product_id'] ?>"><?php echo $product_id ?></a></td>
+                    <td><?php echo $row3['bid_amount'] ?></td>
+                    <td><?php echo $row['bid_amount'] ?></td>
+                    <td><img src="img/<?php echo $row2['image'] ?>" alt="" border=3 height=50 width=120></img></td>
+                </tr>
             </tbody>
+            <?php } ?>
         </table>
         <br><br>
     </div>

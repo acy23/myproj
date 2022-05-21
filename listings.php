@@ -17,12 +17,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>ezBUYo</title>
         
         <!-- Google Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         
         <!-- Bootstrap -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -53,15 +55,26 @@
         .column {
             float: left;
             width: 25%;
-            padding: 15px;
+            padding: 10px;
             height: 550px; /* Should be removed. Only for demonstration */
         }
 
         /* Clear floats after the columns */
-            .row:after {
+        .row:after {
             content: "";
             display: table;
             clear: both;
+        }
+        .buttons {
+            width: 200px;
+            margin: 0 auto;
+            display: inline;
+        }
+
+        .action_btn {
+            width: 200px;
+            margin: 0 auto;
+            display: inline;
         }
     </style>    
     
@@ -139,11 +152,15 @@
             $sql = "SELECT * FROM product";
             $result = mysqli_query($con,$sql);
 
+            $id = $_SESSION['id'];
+
             if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_array($result)){
-                    $count = 0;
-                    $count = $count+10;
-
+                    $product_id = $row['product_id'];
+                    $sql2 = "SELECT * FROM bids WHERE product_id=$product_id ORDER BY (bid_amount) DESC";
+                    $result2 = mysqli_query($con,$sql2);
+                    $firstrow = mysqli_fetch_assoc($result2);
+                    
             ?>
             <div class="column">
                 
@@ -151,22 +168,32 @@
                     <img src="img/<?php echo $row['image'] ?>" alt="">
                 </div>
                 <h2><a href="single-product.php?product_id=<?php echo $row['product_id'] ?>"><?php echo $row['name'] ?></a></h2>
-                <div class="product-carousel-price">
-                    <ins>Price: <?php echo $row['price'] ?>$</ins> 
-                </div>  
-                <div class="product-option-shop">
-                    <?php if($row['is_listing'] == 1): ?>
-                        
-                        <a class="add_to_cart_button" href="scripts/purchase.php?product_id=<?php echo $row['product_id'] ?>&user_id=<?php echo $user_id ?>">Buy Now</a>
-                        
-                    <?php elseif($row['is_auction'] == 1): ?>
-                        
-                        <a class="add_to_cart_button">Bid</a>
+                <?php if($row['is_listing'] == 1): ?>
+                    <div class="product-carousel-price">
+                        <ins>Price: <?php echo $row['price'] ?>$</ins><br><br>
+                    </div>
+                <?php elseif($row['is_auction'] == 1): ?>
+                    <div class="product-carousel-price">
+                        <ins>Highest bid: <?php echo $firstrow['bid_amount'] ?>$</ins><br><br>
+                    </div>
+                <?php endif; ?>
+                <div class="buttons">
+                    <div class="action_btn">
+                        <?php if($row['is_listing'] == 1): ?>
+                            
+                            <a class="add_to_cart_button" href="scripts/purchase.php?product_id=<?php echo $row['product_id'] ?>&user_id=<?php echo $user_id ?>">Buy Now</a>
+                            
+                        <?php elseif($row['is_auction'] == 1): ?>
+                            
+                                <form method="post" action="scripts/place_bid.php">
+                                    <p><label for="product_id"></label> <input name="product_id" type="hidden" value="<?php echo $product_id ?>"></p>
+                                    <p><label style="add_to_cart_button" for="bid">Bid</label> <input name="bid" type="number" placeholder="Place bid here.." min="<?php echo $firstrow['bid_amount'] ?>"></p>
+                                    <p><input style="add_to_cart_button" type="submit" value="Place" name="submit"></p>
+                                </form>
 
-                    <br><br>
-                    <?php endif; ?>
-
-                        <a class="add_to_cart_button" href="scripts/addtofavs.php?product_id=<?php echo $row['product_id'] ?>&user_id=<?php echo $user_id ?>">Favourite</a>   
+                        <?php endif; ?>
+                            <a class="add_to_cart_button" href="scripts/addtofavs.php?product_id=<?php echo $row['product_id'] ?>&user_id=<?php echo $user_id ?>">Favourite</a>   
+                    </div> 
                 </div>                       
                 
             </div>
