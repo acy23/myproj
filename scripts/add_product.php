@@ -46,17 +46,7 @@
                     $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
                     $img_upload_path = '../img/'.$new_img_name;
                     move_uploaded_file($tmp_name, $img_upload_path);
-                    echo $listing;
-                    echo $category;
-                    echo $condition;
-                    echo $brand;
-                    echo $new_img_name;
-                    echo $description;
-                    echo $is_listing;
-                    echo $is_auction;
-                    echo $price;
-                    echo $user_id;
-                    echo $name; 
+
                     // Insert into Database
                     $sql = "INSERT INTO product (category,conditionn,brand,image,description,is_listing,is_auction,price,user_id,name)
                             VALUES ('$category','$condition','$brand','$new_img_name','$description',$is_listing,$is_auction,$price,$user_id,'$name')";

@@ -85,21 +85,26 @@
         </div>
     </div>
     <br><br><br>
+    <?php
+    $username = $_SESSION['username'];
 
+    $result = mysqli_query($con,"SELECT * FROM users WHERE username='$username' LIMIT 1");
+    $row = mysqli_fetch_assoc($result);
+    ?>
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-7">
                 <div class="card p-3 py-4">
-                    <div class="text-center"> <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"> </div>
+                    <div class="text-center"> <img src="img/<?php echo $row['image'] ?>" width="300" height="400" class="rounded-circle"> </div>
                         <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white"></span><br>
                         <label>First name:</label>
-                        <h5 class="mt-2 mb-0"></h5><br>
+                        <h5 class="mt-2 mb-0"><?php echo $row['name'] ?></h5><br>
                         <label>Last name:</label>
-                        <h5 class="mt-2 mb-0"></h5><br>
+                        <h5 class="mt-2 mb-0"><?php echo $row['surname'] ?></h5><br>
                         <label>Username:</label>
-                        <h5 class="mt-2 mb-0"><span></span><br><br>
+                        <h5 class="mt-2 mb-0"><?php echo $row['username'] ?><span></span><br><br>
                         <label>Phone:</label>
-                        <h5 class="mt-2 mb-0"><span></span>
+                        <h5 class="mt-2 mb-0"><?php echo $row['phone'] ?><span></span>
                     
                             
                         </div>

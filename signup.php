@@ -47,7 +47,7 @@
 </style>  
 </head>  
 <body>  
-    <form method="post" action="scripts/signupnew.php">
+    <form method="post" action="scripts/signupnew.php" enctype="multipart/form-data">
         <div class="container">  
             <center>  <h1> Sign Up</h1> </center>  
             <hr>  
@@ -70,7 +70,7 @@
             <input type="text" name="phonenumber" placeholder="Phone Number" size="15" required /><br>   
 
             <label for="avatar">Choose a profile picture:</label>
-            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+            <input type="file" id="image" name="image" accept="image/png, image/jpeg">
 
             <input type="submit" class="registerbtn" value="REGISTER" name="submit">
         </div>    
