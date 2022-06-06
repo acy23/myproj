@@ -46,7 +46,6 @@
 
    </head>
     <body>
-    
     <div class="site-branding-area">
         <div class="container">
             <div class="row">
@@ -102,7 +101,7 @@
             <tr>
                 <th scope="col">Date</th>
                 <th scope="col">First name</th>
-                <th scope="col">Last name</th>
+                <th scope="col">Last name</th>  
                 <th scope="col">Username</th>
                 <th scope="col">Product</th>
                 <th scope="col">Message</th>
@@ -130,9 +129,15 @@
                     <td><a href="single-product.php?product_id=<?php echo $row['product_id'] ?>"><?php echo $row['product_id'] ?></td>
                     <td><?php echo $row['message'] ?></td>
                     <td><a href="messages.php?message_id=<?php echo $row['message_id'] ?>" class='btn btn-primary btn'>Delete</a><br></td>
+                    <td><a href="" class='btn btn-primary btn'>Delete</a><br></td>
+                    
+
+                    
                 </tr>
             </tbody>
+            
             <?php } } ?>
+           
         </table>
     </div>
 
